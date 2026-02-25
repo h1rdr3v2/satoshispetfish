@@ -10,12 +10,12 @@ export default function Footer() {
 			</span>
 			<span style={{ margin: "0 8px", color: "#ffffff22" }}>|</span>
 			<a
-				href="https://x.com/h1rdr3v2"
+				href="https://x.com/JustDevEze"
 				target="_blank"
 				rel="noopener noreferrer"
 				style={{ fontSize: 12, fontWeight: "bold" }}
 			>
-				𝕏 @h1rdr3v2
+				𝕏 @JustDevEze
 			</a>
 		</div>
 	)
