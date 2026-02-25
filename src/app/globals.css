@@ -1,427 +1,559 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a1628;
-  --foreground: #ededed;
+	--background: #0a1628;
+	--foreground: #ededed;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
+	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
 }
 
 /* ===== AQUARIUM ===== */
 .aquarium {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(180deg, #0a1628 0%, #0d2137 20%, #0f2b4a 40%, #11365e 60%, #134072 80%, #154a86 100%);
-  overflow: hidden;
-  cursor: crosshair;
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	background: linear-gradient(
+		180deg,
+		#0a1628 0%,
+		#0d2137 20%,
+		#0f2b4a 40%,
+		#11365e 60%,
+		#134072 80%,
+		#154a86 100%
+	);
+	overflow: hidden;
+	cursor: crosshair;
 }
 
 .aquarium::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(ellipse at 20% 50%, rgba(0, 180, 255, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 30%, rgba(0, 200, 255, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(0, 150, 255, 0.05) 0%, transparent 50%);
-  animation: caustics 8s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 1;
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(
+			ellipse at 20% 50%,
+			rgba(0, 180, 255, 0.04) 0%,
+			transparent 50%
+		),
+		radial-gradient(
+			ellipse at 80% 30%,
+			rgba(0, 200, 255, 0.03) 0%,
+			transparent 50%
+		),
+		radial-gradient(
+			ellipse at 50% 80%,
+			rgba(0, 150, 255, 0.05) 0%,
+			transparent 50%
+		);
+	animation: caustics 8s ease-in-out infinite alternate;
+	pointer-events: none;
+	z-index: 1;
 }
 
 @keyframes caustics {
-  0% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
-  100% { opacity: 0.7; transform: scale(0.98); }
+	0% {
+		opacity: 0.5;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.05);
+	}
+	100% {
+		opacity: 0.7;
+		transform: scale(0.98);
+	}
 }
 
 .light-rays {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60%;
-  background: 
-    linear-gradient(170deg, rgba(255, 255, 200, 0.06) 0%, transparent 40%),
-    linear-gradient(160deg, rgba(255, 255, 200, 0.04) 0%, transparent 35%),
-    linear-gradient(175deg, rgba(255, 255, 200, 0.03) 0%, transparent 30%);
-  pointer-events: none;
-  z-index: 1;
-  animation: lightRays 6s ease-in-out infinite alternate;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 60%;
+	background:
+		linear-gradient(170deg, rgba(255, 255, 200, 0.06) 0%, transparent 40%),
+		linear-gradient(160deg, rgba(255, 255, 200, 0.04) 0%, transparent 35%),
+		linear-gradient(175deg, rgba(255, 255, 200, 0.03) 0%, transparent 30%);
+	pointer-events: none;
+	z-index: 1;
+	animation: lightRays 6s ease-in-out infinite alternate;
 }
 
 @keyframes lightRays {
-  0% { opacity: 0.6; }
-  100% { opacity: 1; }
+	0% {
+		opacity: 0.6;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 .sand {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: linear-gradient(0deg, #c4a265 0%, #d4b87a 40%, transparent 100%);
-  z-index: 2;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 60px;
+	background: linear-gradient(0deg, #c4a265 0%, #d4b87a 40%, transparent 100%);
+	z-index: 2;
 }
 
 /* ===== SEAWEED ===== */
 .seaweed {
-  position: absolute;
-  bottom: 30px;
-  width: 12px;
-  z-index: 3;
+	position: absolute;
+	bottom: 30px;
+	width: 12px;
+	z-index: 3;
 }
 
 .seaweed-blade {
-  position: absolute;
-  bottom: 0;
-  width: 12px;
-  border-radius: 50% 50% 0 0;
-  transform-origin: bottom center;
-  animation: sway var(--sway-duration, 3s) ease-in-out infinite alternate;
+	position: absolute;
+	bottom: 0;
+	width: 12px;
+	border-radius: 50% 50% 0 0;
+	transform-origin: bottom center;
+	animation: sway var(--sway-duration, 3s) ease-in-out infinite alternate;
 }
 
 @keyframes sway {
-  0% { transform: rotate(-5deg) scaleY(1); }
-  25% { transform: rotate(3deg) scaleY(1.02); }
-  50% { transform: rotate(-3deg) scaleY(0.98); }
-  75% { transform: rotate(4deg) scaleY(1.01); }
-  100% { transform: rotate(-4deg) scaleY(1); }
+	0% {
+		transform: rotate(-5deg) scaleY(1);
+	}
+	25% {
+		transform: rotate(3deg) scaleY(1.02);
+	}
+	50% {
+		transform: rotate(-3deg) scaleY(0.98);
+	}
+	75% {
+		transform: rotate(4deg) scaleY(1.01);
+	}
+	100% {
+		transform: rotate(-4deg) scaleY(1);
+	}
 }
 
 /* ===== BUBBLES ===== */
 .bubble {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  animation: rise var(--rise-duration, 4s) ease-in forwards;
-  pointer-events: none;
-  z-index: 10;
+	position: absolute;
+	border-radius: 50%;
+	background: radial-gradient(
+		circle at 30% 30%,
+		rgba(255, 255, 255, 0.4),
+		rgba(255, 255, 255, 0.1)
+	);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	animation: rise var(--rise-duration, 4s) ease-in forwards;
+	pointer-events: none;
+	z-index: 10;
 }
 
 @keyframes rise {
-  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
-  25% { transform: translateY(-25vh) translateX(10px) scale(1.1); opacity: 0.6; }
-  50% { transform: translateY(-50vh) translateX(-5px) scale(1.2); opacity: 0.4; }
-  75% { transform: translateY(-75vh) translateX(8px) scale(1.1); opacity: 0.2; }
-  100% { transform: translateY(-100vh) translateX(0) scale(1); opacity: 0; }
+	0% {
+		transform: translateY(0) translateX(0) scale(1);
+		opacity: 0.8;
+	}
+	25% {
+		transform: translateY(-25vh) translateX(10px) scale(1.1);
+		opacity: 0.6;
+	}
+	50% {
+		transform: translateY(-50vh) translateX(-5px) scale(1.2);
+		opacity: 0.4;
+	}
+	75% {
+		transform: translateY(-75vh) translateX(8px) scale(1.1);
+		opacity: 0.2;
+	}
+	100% {
+		transform: translateY(-100vh) translateX(0) scale(1);
+		opacity: 0;
+	}
 }
 
 /* ===== FISH ===== */
 .fish {
-  position: absolute;
-  z-index: 5;
-  transition: transform 0.3s ease;
-  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
-  cursor: pointer;
+	position: absolute;
+	z-index: 5;
+	transition: transform 0.3s ease;
+	filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+	cursor: pointer;
 }
 
 .fish:hover {
-  filter: drop-shadow(0 0 15px rgba(255, 200, 0, 0.5));
+	filter: drop-shadow(0 0 15px rgba(255, 200, 0, 0.5));
 }
 
 .fish-body {
-  position: relative;
-  display: flex;
-  align-items: center;
+	position: relative;
+	display: flex;
+	align-items: center;
 }
 
 .fish-main {
-  width: var(--fish-size, 50px);
-  height: calc(var(--fish-size, 50px) * 0.55);
-  border-radius: 50% 45% 45% 50%;
-  background: var(--fish-color, #ff6b35);
-  position: relative;
-  animation: swim 1.5s ease-in-out infinite;
+	width: var(--fish-size, 50px);
+	height: calc(var(--fish-size, 50px) * 0.55);
+	border-radius: 50% 45% 45% 50%;
+	background: var(--fish-color, #ff6b35);
+	position: relative;
+	animation: swim 1.5s ease-in-out infinite;
 }
 
 @keyframes swim {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-3px) rotate(1deg); }
-  75% { transform: translateY(3px) rotate(-1deg); }
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg);
+	}
+	25% {
+		transform: translateY(-3px) rotate(1deg);
+	}
+	75% {
+		transform: translateY(3px) rotate(-1deg);
+	}
 }
 
 .fish-eye {
-  position: absolute;
-  width: calc(var(--fish-size, 50px) * 0.18);
-  height: calc(var(--fish-size, 50px) * 0.18);
-  background: white;
-  border-radius: 50%;
-  top: 25%;
-  right: 18%;
+	position: absolute;
+	width: calc(var(--fish-size, 50px) * 0.18);
+	height: calc(var(--fish-size, 50px) * 0.18);
+	background: white;
+	border-radius: 50%;
+	top: 25%;
+	right: 18%;
 }
 
 .fish-eye::after {
-  content: '';
-  position: absolute;
-  width: 55%;
-  height: 55%;
-  background: #1a1a2e;
-  border-radius: 50%;
-  top: 25%;
-  left: 30%;
-  animation: blink 4s ease-in-out infinite;
+	content: "";
+	position: absolute;
+	width: 55%;
+	height: 55%;
+	background: #1a1a2e;
+	border-radius: 50%;
+	top: 25%;
+	left: 30%;
+	animation: blink 4s ease-in-out infinite;
 }
 
 @keyframes blink {
-  0%, 95%, 100% { transform: scaleY(1); }
-  97% { transform: scaleY(0.1); }
+	0%,
+	95%,
+	100% {
+		transform: scaleY(1);
+	}
+	97% {
+		transform: scaleY(0.1);
+	}
 }
 
 .fish-tail {
-  width: 0;
-  height: 0;
-  border-top: calc(var(--fish-size, 50px) * 0.25) solid transparent;
-  border-bottom: calc(var(--fish-size, 50px) * 0.25) solid transparent;
-  border-right: calc(var(--fish-size, 50px) * 0.3) solid var(--fish-color, #ff6b35);
-  animation: tailWag 0.6s ease-in-out infinite alternate;
-  filter: brightness(0.85);
+	width: 0;
+	height: 0;
+	border-top: calc(var(--fish-size, 50px) * 0.25) solid transparent;
+	border-bottom: calc(var(--fish-size, 50px) * 0.25) solid transparent;
+	border-right: calc(var(--fish-size, 50px) * 0.3) solid
+		var(--fish-color, #ff6b35);
+	animation: tailWag 0.6s ease-in-out infinite alternate;
+	filter: brightness(0.85);
 }
 
 @keyframes tailWag {
-  0% { transform: scaleY(0.8) rotate(-5deg); }
-  100% { transform: scaleY(1.1) rotate(5deg); }
+	0% {
+		transform: scaleY(0.8) rotate(-5deg);
+	}
+	100% {
+		transform: scaleY(1.1) rotate(5deg);
+	}
 }
 
 .fish-fin {
-  position: absolute;
-  bottom: -2px;
-  left: 40%;
-  width: calc(var(--fish-size, 50px) * 0.25);
-  height: calc(var(--fish-size, 50px) * 0.15);
-  background: var(--fish-color, #ff6b35);
-  filter: brightness(0.8);
-  border-radius: 0 0 50% 50%;
-  transform-origin: top center;
-  animation: finWave 1s ease-in-out infinite alternate;
+	position: absolute;
+	bottom: -2px;
+	left: 40%;
+	width: calc(var(--fish-size, 50px) * 0.25);
+	height: calc(var(--fish-size, 50px) * 0.15);
+	background: var(--fish-color, #ff6b35);
+	filter: brightness(0.8);
+	border-radius: 0 0 50% 50%;
+	transform-origin: top center;
+	animation: finWave 1s ease-in-out infinite alternate;
 }
 
 @keyframes finWave {
-  0% { transform: rotate(-10deg); }
-  100% { transform: rotate(10deg); }
+	0% {
+		transform: rotate(-10deg);
+	}
+	100% {
+		transform: rotate(10deg);
+	}
 }
 
 .fish-dorsal {
-  position: absolute;
-  top: -6px;
-  left: 35%;
-  width: calc(var(--fish-size, 50px) * 0.2);
-  height: calc(var(--fish-size, 50px) * 0.15);
-  background: var(--fish-color, #ff6b35);
-  filter: brightness(1.15);
-  border-radius: 50% 50% 0 0;
-  transform-origin: bottom center;
-  animation: dorsalWave 2s ease-in-out infinite alternate;
+	position: absolute;
+	top: -6px;
+	left: 35%;
+	width: calc(var(--fish-size, 50px) * 0.2);
+	height: calc(var(--fish-size, 50px) * 0.15);
+	background: var(--fish-color, #ff6b35);
+	filter: brightness(1.15);
+	border-radius: 50% 50% 0 0;
+	transform-origin: bottom center;
+	animation: dorsalWave 2s ease-in-out infinite alternate;
 }
 
 @keyframes dorsalWave {
-  0% { transform: rotate(-3deg); }
-  100% { transform: rotate(3deg); }
+	0% {
+		transform: rotate(-3deg);
+	}
+	100% {
+		transform: rotate(3deg);
+	}
 }
 
 /* ===== FOOD ===== */
 .food-particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #ffd700, #ff8c00);
-  z-index: 8;
-  animation: foodFall 3s ease-in forwards;
-  pointer-events: none;
-  box-shadow: 0 0 6px rgba(255, 200, 0, 0.6);
+	position: absolute;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: radial-gradient(circle, #ffd700, #ff8c00);
+	z-index: 8;
+	animation: foodFall 3s ease-in forwards;
+	pointer-events: none;
+	box-shadow: 0 0 6px rgba(255, 200, 0, 0.6);
 }
 
 @keyframes foodFall {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(200px) scale(0.5); opacity: 0.3; }
+	0% {
+		transform: translateY(0) scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(200px) scale(0.5);
+		opacity: 0.3;
+	}
 }
 
 /* ===== SATOSHI COUNTER ===== */
 .satoshi-float {
-  position: absolute;
-  color: #ffd700;
-  font-weight: bold;
-  font-size: 14px;
-  pointer-events: none;
-  z-index: 20;
-  animation: floatUp 1.5s ease-out forwards;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+	position: absolute;
+	color: #ffd700;
+	font-weight: bold;
+	font-size: 14px;
+	pointer-events: none;
+	z-index: 20;
+	animation: floatUp 1.5s ease-out forwards;
+	text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
 }
 
 @keyframes floatUp {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-60px) scale(1.3); opacity: 0; }
+	0% {
+		transform: translateY(0) scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(-60px) scale(1.3);
+		opacity: 0;
+	}
 }
 
 /* ===== UI PANELS ===== */
 .glass-panel {
-  background: rgba(10, 22, 40, 0.75);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	background: rgba(10, 22, 40, 0.75);
+	backdrop-filter: blur(12px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 16px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .glow-text {
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.3);
+	text-shadow:
+		0 0 10px rgba(255, 215, 0, 0.6),
+		0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 /* ===== SHOP ===== */
 .shop-item {
-  transition: all 0.2s ease;
-  cursor: pointer;
+	transition: all 0.2s ease;
+	cursor: pointer;
 }
 
 .shop-item:hover {
-  transform: scale(1.03);
-  border-color: rgba(255, 215, 0, 0.5);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+	transform: scale(1.03);
+	border-color: rgba(255, 215, 0, 0.5);
+	box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
 }
 
 .shop-item:active {
-  transform: scale(0.97);
+	transform: scale(0.97);
 }
 
 /* ===== TREASURE CHEST ===== */
 .treasure {
-  position: absolute;
-  z-index: 4;
-  cursor: pointer;
-  transition: transform 0.3s;
+	position: absolute;
+	z-index: 4;
+	cursor: pointer;
+	transition: transform 0.3s;
 }
 
 .treasure:hover {
-  transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 .treasure-sparkle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: #ffd700;
-  border-radius: 50%;
-  animation: sparkle 1.5s ease-in-out infinite;
-  pointer-events: none;
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	background: #ffd700;
+	border-radius: 50%;
+	animation: sparkle 1.5s ease-in-out infinite;
+	pointer-events: none;
 }
 
 @keyframes sparkle {
-  0%, 100% { opacity: 0; transform: scale(0); }
-  50% { opacity: 1; transform: scale(1); }
+	0%,
+	100% {
+		opacity: 0;
+		transform: scale(0);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 
 /* ===== CLICK RIPPLE ===== */
 .click-ripple {
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  animation: ripple 1s ease-out forwards;
-  pointer-events: none;
-  z-index: 15;
+	position: absolute;
+	border-radius: 50%;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	animation: ripple 1s ease-out forwards;
+	pointer-events: none;
+	z-index: 15;
 }
 
 @keyframes ripple {
-  0% { width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); }
-  100% { width: 100px; height: 100px; opacity: 0; transform: translate(-50%, -50%); }
+	0% {
+		width: 0;
+		height: 0;
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+	100% {
+		width: 100px;
+		height: 100px;
+		opacity: 0;
+		transform: translate(-50%, -50%);
+	}
 }
 
 .btc-rain {
-  position: absolute;
-  font-size: 20px;
-  animation: btcFall 3s linear forwards;
-  pointer-events: none;
-  z-index: 20;
-  opacity: 0.7;
+	position: absolute;
+	font-size: 20px;
+	animation: btcFall 3s linear forwards;
+	pointer-events: none;
+	z-index: 20;
+	opacity: 0.7;
 }
 
 @keyframes btcFall {
-  0% { transform: translateY(-20px) rotate(0deg); opacity: 0.7; }
-  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+	0% {
+		transform: translateY(-20px) rotate(0deg);
+		opacity: 0.7;
+	}
+	100% {
+		transform: translateY(100vh) rotate(720deg);
+		opacity: 0;
+	}
 }
 
 .fish-tooltip {
-  position: absolute;
-  top: -45px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(10, 22, 40, 0.9);
-  border: 1px solid rgba(255, 215, 0, 0.4);
-  border-radius: 8px;
-  padding: 4px 10px;
-  font-size: 11px;
-  white-space: nowrap;
-  color: #ffd700;
-  opacity: 0;
-  transition: opacity 0.2s;
-  pointer-events: none;
-  z-index: 30;
+	position: absolute;
+	top: -45px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(10, 22, 40, 0.9);
+	border: 1px solid rgba(255, 215, 0, 0.4);
+	border-radius: 8px;
+	padding: 4px 10px;
+	font-size: 11px;
+	white-space: nowrap;
+	color: #ffd700;
+	opacity: 0;
+	transition: opacity 0.2s;
+	pointer-events: none;
+	z-index: 30;
 }
 
 .fish:hover .fish-tooltip {
-  opacity: 1;
+	opacity: 1;
 }
 
 .coral {
-  position: absolute;
-  bottom: 30px;
-  z-index: 3;
+	position: absolute;
+	bottom: 30px;
+	z-index: 3;
 }
 
 .footer-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  background: linear-gradient(0deg, rgba(10, 22, 40, 0.95) 0%, rgba(10, 22, 40, 0.8) 70%, transparent 100%);
-  padding: 12px 0 10px;
-  text-align: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 50;
+	background: linear-gradient(
+		0deg,
+		rgba(10, 22, 40, 0.95) 0%,
+		rgba(10, 22, 40, 0.8) 70%,
+		transparent 100%
+	);
+	padding: 12px 0 10px;
+	text-align: center;
 }
 
 .footer-bar a {
-  color: #8ecdf7;
-  text-decoration: none;
-  transition: color 0.2s, text-shadow 0.2s;
+	color: #8ecdf7;
+	text-decoration: none;
+	transition:
+		color 0.2s,
+		text-shadow 0.2s;
 }
 
 .footer-bar a:hover {
-  color: #ffd700;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+	color: #ffd700;
+	text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+	width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 3px;
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 3px;
+	background: rgba(255, 255, 255, 0.15);
+	border-radius: 3px;
 }

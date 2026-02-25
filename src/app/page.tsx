@@ -1,6 +1,5 @@
-import Aquarium from "@/components/Aquarium";
+import Aquarium from "@/components/Aquarium"
 
 export default function Home() {
-  return <Aquarium />;
+	return <Aquarium />
 }
-
